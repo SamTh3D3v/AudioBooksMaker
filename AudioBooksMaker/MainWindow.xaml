@@ -19,11 +19,36 @@
     </Window.Resources>
 
     <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" ToolTip="Open the file to read or generate audio from "/>
+                <MenuItem Header="Read">
+                    <MenuItem Header="Current Page"/>
+                    <MenuItem Header="From this Page"/>
+                    <MenuItem Header="Read selected text"/>
+                </MenuItem>
+                <MenuItem Header="Save" ToolTip="Save the file to audio"/>
+            </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Edit"/>
+            </MenuItem>
+            <MenuItem Header="Settings">
+                <MenuItem Header="Settings"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="Chm help"/>
+                <MenuItem Header="About"/>
+            </MenuItem>
+        </Menu>
 
-        <TextBlock FontSize="36"
+        <TextBlock FontSize="36" Grid.Row="1"
                    FontWeight="Bold"
                    Foreground="Purple"
-                   Text="{Binding WelcomeTitle}"
+                   Text="{Binding CoreDocument}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap" />

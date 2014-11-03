@@ -3,70 +3,38 @@ using AudioBooksMaker.Model;
 
 namespace AudioBooksMaker.ViewModel
 {
-    /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
-    /// </summary>
+   
     public class MainViewModel : ViewModelBase
     {
-        private readonly IDataService _dataService;
-
-        /// <summary>
-        /// The <see cref="WelcomeTitle" /> property's name.
-        /// </summary>
-        public const string WelcomeTitlePropertyName = "WelcomeTitle";
-
-        private string _welcomeTitle = string.Empty;
-
-        /// <summary>
-        /// Gets the WelcomeTitle property.
-        /// Changes to that property's value raise the PropertyChanged event. 
-        /// </summary>
-        public string WelcomeTitle
+        #region Consts
+        public const string CoreDocumentPropertyName = "CoreDocument";
+        #endregion
+        #region Fields
+        private string _coreDocument = string.Empty;
+        #endregion
+        #region Properties
+        public string CoreDocument
         {
             get
             {
-                return _welcomeTitle;
+                return _coreDocument;
             }
 
             set
             {
-                if (_welcomeTitle == value)
+                if (_coreDocument == value)
                 {
                     return;
                 }
 
-                _welcomeTitle = value;
-                RaisePropertyChanged(WelcomeTitlePropertyName);
+                _coreDocument = value;
+                RaisePropertyChanged(CoreDocumentPropertyName);
             }
         }
-
-        /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
-        /// </summary>
-        public MainViewModel(IDataService dataService)
+        #endregion    
+        public MainViewModel()
         {
-            _dataService = dataService;
-            _dataService.GetData(
-                (item, error) =>
-                {
-                    if (error != null)
-                    {
-                        // Report error here
-                        return;
-                    }
-
-                    WelcomeTitle = item.Title;
-                });
+           
         }
-
-        ////public override void Cleanup()
-        ////{
-        ////    // Clean up if needed
-
-        ////    base.Cleanup();
-        ////}
     }
 }
