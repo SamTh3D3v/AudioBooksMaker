@@ -34,7 +34,7 @@ namespace AudioBooksMaker.ViewModel
         #endregion    
         public MainViewModel()
         {
-           
+            CoreDocument = "The file goes here";
         }
     }
 }
